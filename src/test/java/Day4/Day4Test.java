@@ -68,7 +68,8 @@ public class Day4Test {
 
             // a Stream consistent of the elements of this stream, each boxed to an Integer
             // Jag kanske skulle ha gjort Listor från början men det blev såhär med Arrays pga de va enklare att plussa på siffror ovan
-            // och få hela range för firstElfArray och secondElfArray
+            // Pga Arrays måste ha en fixed length från början, så kan jag matematiskt lista ut hur många siffror den skall innehålla (innehåller ju 0or i början men dem ändras sedan)
+            // Sedan skapa 2 clones (Listor) av dessa Arrays som jag sedan streamar och använder contains()
             List<Integer> first = Arrays.stream(firstElfArray).boxed().collect(Collectors.toList());
             List<Integer> second = Arrays.stream(secondElfArray).boxed().collect(Collectors.toList());
 
