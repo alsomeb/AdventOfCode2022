@@ -75,6 +75,7 @@ public class Day4Test {
             System.out.println(first);
             System.out.println(second);
 
+            // true if any elements of these streams match the provided predicates, otherwise false
             boolean secondListContainsAnyNumberFromFirst = first.stream().anyMatch(s -> second.contains(s));
             boolean firstListContainsAnyNumberFromSecond = second.stream().anyMatch(s -> first.contains(s));
 
