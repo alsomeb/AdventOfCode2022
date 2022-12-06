@@ -4,7 +4,6 @@ import org.example.Day1.FileReader;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,7 +52,7 @@ public class Day4Test {
             int startSecondElf = Integer.parseInt(elfPairs[1].split("-")[0]);
             int endSecondElf = Integer.parseInt(elfPairs[1].split("-")[1]);
 
-            int[] firstElfArray = new int[endFirstElf - startFirstElf + 1];
+            int[] firstElfArray = new int[endFirstElf - startFirstElf + 1]; // TEX 2,4 skall va array [2, 3, 4], length för array är 4 - 2 + 1 == 3 Siffror
             int[] secondElfArray = new int[endSecondElf - startSecondElf + 1];
 
             for (int i = 0; i < firstElfArray.length; i++) {
