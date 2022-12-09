@@ -62,11 +62,14 @@ public class Day5Test {
 
                 // Görs så många gånger som amount säger
                 for(int i = 0; i < amount; i++){
-                    String elementToBeMoved = containers.get(fromIndex - 1).get(0); // pga den på toppen skall alltid flyttas
-                    containers.get(fromIndex - 1).remove(0);
+                    int fromIndexFormatted = fromIndex- 1;
+                    int targetIndexFormatted = targetIndex - 1;
+
+                    String elementToBeMoved = containers.get(fromIndexFormatted).get(0); // pga den på toppen skall alltid flyttas
+                    containers.get(fromIndexFormatted).remove(0);
 
                     // lägg till elementet på targetIndex
-                    containers.get(targetIndex - 1).add(0, elementToBeMoved);
+                    containers.get(targetIndexFormatted).add(0, elementToBeMoved);
                 }
 
             }
