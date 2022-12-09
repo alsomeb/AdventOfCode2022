@@ -69,6 +69,8 @@ public class Day5Test {
                     containers.get(fromIndexFormatted).remove(0);
 
                     // lägg till elementet på targetIndex
+                    // Inserts the specified element at the specified position in this list.
+                    // Shifts the element currently at that position and any subsequent elements to the right (adds one to their indices).
                     containers.get(targetIndexFormatted).add(0, elementToBeMoved);
                 }
 
