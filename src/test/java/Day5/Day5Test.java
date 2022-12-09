@@ -79,8 +79,8 @@ public class Day5Test {
         }
         // Hämtar varje letter som ligger först i varje lista (letterList) och concatenate till en sträng
         // "Returns a Collector that concatenates the input elements into a String, in encounter order."
-        String bigBrainLine = containers.stream().map(letterList -> letterList.get(0)).collect(Collectors.joining());
-        System.out.println(bigBrainLine);
-        assertEquals("TLFGBZHCN", bigBrainLine);
+        String firstLetterOfEveryListConcat = containers.stream().map(letterList -> letterList.get(0)).collect(Collectors.joining());
+        System.out.println(firstLetterOfEveryListConcat);
+        assertEquals("TLFGBZHCN", firstLetterOfEveryListConcat);
     }
 }
