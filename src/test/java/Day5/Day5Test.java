@@ -83,4 +83,73 @@ public class Day5Test {
         System.out.println(firstLetterOfEveryListConcat);
         assertEquals("TLFGBZHCN", firstLetterOfEveryListConcat);
     }
+
+    @Test
+    void part2() {
+        int amount;
+        int fromIndex;
+        int targetIndex;
+
+        List<List<String>> containers = new ArrayList<>(
+                List.of(
+                        new ArrayList<>(Arrays.asList("P", "V", "Z", "W", "D", "T")),
+                        new ArrayList<>(Arrays.asList("D", "J", "F", "V", "W", "S", "L")),
+                        new ArrayList<>(Arrays.asList("H", "B", "T", "V", "S", "L", "M", "Z")),
+                        new ArrayList<>(Arrays.asList("J", "S", "R")),
+                        new ArrayList<>(Arrays.asList("W", "L", "M", "F", "G", "B", "Z", "C")),
+                        new ArrayList<>(Arrays.asList("B","G","R","Z","H","V","W","Q")),
+                        new ArrayList<>(Arrays.asList("N", "D", "B", "C", "P", "J", "V")),
+                        new ArrayList<>(Arrays.asList("Q","B","T","P")),
+                        new ArrayList<>(Arrays.asList("C","R","Z","G","H"))
+                )
+        );
+
+        for (String line : lines) {
+            // Regex
+            // Lägger olika grupper, dessa markeras genom paranteser i regex string
+            Pattern pattern = Pattern.compile("move (\\d+) from (\\d+) to (\\d+)");
+            Matcher matcher = pattern.matcher(line);
+
+            boolean matchFound = matcher.find();
+            if(matchFound) {
+
+                // Hämtar värden från regex grupperna (DEN BÖRJAR EJ FRÅN 0, FUNKAR SAMMA SOM INDEX),
+                // vi behöver ej split och ta från index
+                amount = Integer.parseInt(matcher.group(1));
+                fromIndex = Integer.parseInt(matcher.group(2));
+                targetIndex = Integer.parseInt(matcher.group(3));
+
+                // Så indexering blir korrekt
+                int fromIndexFormatted = fromIndex - 1;
+                int targetIndexFormatted = targetIndex - 1;
+
+                List<String> currentStack = containers.get(fromIndexFormatted);
+
+                // Funkar för både chunks och 1, fångar upp alla eventualiteter
+                List<String> chunk = currentStack
+                        .stream()
+                        .limit(amount)
+                        .collect(Collectors.toList());
+
+                // Ta bort dem element vi plockade ut
+                for(int i = 0; i < amount; i++) {
+                    containers.get(fromIndexFormatted).remove(0);
+                }
+
+
+                System.out.println(line);
+                // chunk skall append in till target index
+                System.out.println("HÄMTAD: " + chunk);
+                containers.get(targetIndexFormatted).addAll(0, chunk);
+                System.out.println("CONTAINER: " + containers.get(targetIndexFormatted));
+            }
+
+        }
+
+        String firstLetterOfEveryListConcat = containers.stream().map(letterList -> letterList.get(0)).collect(Collectors.joining());
+        System.out.println(firstLetterOfEveryListConcat);
+
+    }
+
 }
+
